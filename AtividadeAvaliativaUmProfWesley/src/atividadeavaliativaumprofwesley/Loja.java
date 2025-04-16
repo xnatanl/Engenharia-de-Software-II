@@ -9,29 +9,39 @@ public class Loja {
     private String cnpj;
     private double saldoCofre;
     
-    public void comprarMercadoria(int adicional, double preco, Produto produto){
+    public Loja(String razaoSocial, String cnpj, double saldoCofre) {
+        this.razaoSocial = razaoSocial;
+        this.cnpj = cnpj;
+        this.saldoCofre = saldoCofre;
+    }
+    
+    public void comprarMercadoria(int adicional, double preco, Produto produto){  
         double valorTotalCompra = adicional * preco;
-        
-        produto.setQuantidade(produto.getQuantidade() + adicional); 
-        saldoCofre -= valorTotalCompra;
-        System.out.println("Produto comprado e adicionado ao estoque, o saldo no cofre eh de: R$" + saldoCofre + "\n");
-    }    
+       
+        if(valorTotalCompra <= saldoCofre){
+            produto.setQuantidade(produto.getQuantidade() + adicional); 
+            
+            System.out.println("*Compra*\nSaldo anterior da loja: R$" + saldoCofre 
+                + "\nCompra de " + adicional + " " + produto.getNome() + " no valor de R$" + preco + " adicionado ao estoque."
+                + "\nQuantidade do produto em estoque: " + produto.getQuantidade());
+                saldoCofre -= valorTotalCompra;
+                System.out.println("O saldo no cofre eh de: R$" + saldoCofre + "\n");
+        } else System.out.println("Saldo insuficiente para realizar compra\n");    
+    }  
         
     public void venderMercadoria(int qtd, Produto produto){
+        double valorTotalVenda = qtd * produto.getPreco();
+        
         if(qtd <= produto.getQuantidade()){
-            double valorTotalVenda = qtd * produto.getPreco();
-            saldoCofre += valorTotalVenda;
-            produto.setQuantidade(produto.getQuantidade() - qtd);
-            System.out.println("Produto vendido, o saldo no cofre eh de: R$" + saldoCofre + "\n");  
-        }else System.out.println("Informe uma quantidade disponivel do produto no estoque\n");
+            
+            System.out.println("*Venda*\nSaldo anterior da loja: R$" + saldoCofre 
+                + "\nVenda de " + qtd + " " + produto.getNome() + " no valor de R$" + produto.getPreco() + " cada"
+                + "\nQuantidade do produto em estoque: " + produto.getQuantidade());
+                saldoCofre += valorTotalVenda;
+                System.out.println("O saldo no cofre eh de: R$" + saldoCofre + "\n");
+        } else System.out.println("Quantidade requerida para venda esta acima do disponivel em estoque\n");   
     }
                  
-    public void pagarFornecedor(double valor){
-        saldoCofre = saldoCofre - valor;
-        System.out.println("Pagamento para o fornecedor no valor de R$" + valor + " realizado com sucesso\n");
-        System.out.println("Saldo do cofre atualizado para: R$" + saldoCofre + "\n"); 
-    }
-
     public String getRazaoSocial() {
         return razaoSocial;
     }

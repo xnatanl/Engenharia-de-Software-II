@@ -11,16 +11,22 @@ public class Produto {
     private int quantidade;
     private double preco;
     
-    public void consultarProduto(){
-        if(nome.equals("Camiseta")){
-            System.out.println("\nProduto: "
-                    + id
-                    + "\nNome: " + nome
-                    + "\nTipo: " + tipo
-                    + "\nDisponivel em estoque: " + quantidade
-                    + "\nPreco: " + preco + "\n");
-        }else System.out.println("Produto nao cadastrado\n");
+    public Produto(int id, String nome, String tipo, int quantidade, double preco) {
+        this.id = id;
+        this.nome = nome;
+        this.tipo = tipo;
+        this.quantidade = quantidade;
+        this.preco = preco;
     }
+    
+    public void consultarProduto(){
+        System.out.println("\nProduto: "
+            + id
+            + "\nNome: " + nome
+            + "\nTipo: " + tipo
+            + "\nDisponivel em estoque: " + quantidade
+            + "\nPreco: " + preco + "\n");
+    }           
 
     public int getId() {
         return id;
@@ -61,7 +67,4 @@ public class Produto {
     public void setPreco(double preco) {
         this.preco = preco;
     }
-            
-   
-            
-}
+    }

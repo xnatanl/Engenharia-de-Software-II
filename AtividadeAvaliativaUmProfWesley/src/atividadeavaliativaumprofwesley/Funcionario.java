@@ -8,6 +8,13 @@ public class Funcionario extends Pessoa  {
     private int id;
     private String funcao;
     private double salarioHora;
+
+    public Funcionario(String cpf, String nome, int id, String funcao, double salarioHora) {
+        super(cpf, nome);
+        this.id = id;
+        this.funcao = funcao;
+        this.salarioHora = salarioHora;
+    }
     
     public void promocao(String novaFuncao){
         System.out.println(super.getNome() + " foi promovido para " + novaFuncao + "\n");
@@ -23,13 +30,19 @@ public class Funcionario extends Pessoa  {
     
     public void pagarFuncionario(int horasTrabalhadas, Loja loja){
         double pagamento = horasTrabalhadas * salarioHora;
-        double bonus = pagamento * 0.15;
+               
         if(horasTrabalhadas > 8){
+            double bonus = pagamento * 0.15;
             pagamento += bonus;
         }
-        loja.setSaldoCofre(loja.getSaldoCofre() - pagamento);
-        System.out.println("Pagamento do dia para " + super.getNome() + " = R$" +  pagamento + "\n");
-        System.out.println("Saldo do cofre atualizado para: R$" + loja.getSaldoCofre() + "\n");
+        
+        if(pagamento <= loja.getSaldoCofre()){
+            
+            System.out.println("*Pagamento do dia*\nSaldo anterior: R$" + loja.getSaldoCofre() 
+                    + "\nFuncionario: " + super.getNome() + " = R$" +  pagamento);
+            loja.setSaldoCofre(loja.getSaldoCofre() - pagamento);
+            System.out.println("Saldo do cofre atualizado para: R$" + loja.getSaldoCofre() + "\n");
+        }   
     }
 
     public int getId() {
@@ -54,18 +67,15 @@ public class Funcionario extends Pessoa  {
 
     public void setSalarioHora(double salarioHora) {
         this.salarioHora = salarioHora;
-        if(funcao.equals("Estoquista") && salarioHora != 7.00)
-        {
+        if(funcao.equals("Estoquista") && salarioHora != 7.00){
             this.salarioHora = 7.00;
         }
         
-        if(funcao.equals("Gerente") && salarioHora != 12.00)
-        {
+        if(funcao.equals("Gerente") && salarioHora != 12.00){
             this.salarioHora = 12.00;
         }
         
-        if(funcao.equals("Caixa") && salarioHora != 8.00)
-        {
+        if(funcao.equals("Caixa") && salarioHora != 8.00){
             this.salarioHora = 8.00;
         }        
     } 
