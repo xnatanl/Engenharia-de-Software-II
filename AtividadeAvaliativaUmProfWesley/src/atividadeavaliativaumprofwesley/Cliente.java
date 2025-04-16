@@ -18,6 +18,7 @@ public class Cliente extends Pessoa {
     }
     
     public void consultarNome(){
+        System.out.println("*Consulta Spc*");
         if(nomeSpc){
             System.out.println(super.getNome() + " esta com nome negativado\n");
         }else System.out.println("Nada consta em nome de " + super.getNome() + "\n");
@@ -39,10 +40,6 @@ public class Cliente extends Pessoa {
         this.endereco = endereco;
     }
     
-    public void comprar(String nomeProduto, int quantidade){
-        
-    }
-
     public boolean isNomeSpc() {
         return nomeSpc;
     }

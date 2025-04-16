@@ -17,15 +17,16 @@ public class Funcionario extends Pessoa  {
     }
     
     public void promocao(String novaFuncao){
-        System.out.println(super.getNome() + " foi promovido para " + novaFuncao + "\n");
-        if(novaFuncao.equals("Estoquista") || novaFuncao.equals("Gerente") || novaFuncao.equals("Caixa"))
+        System.out.println("*Mudanca de cargo*");
+        if(funcao != novaFuncao && novaFuncao.equals("Estoquista") || novaFuncao.equals("Gerente") || novaFuncao.equals("Caixa"))
         {
+            System.out.println(super.getNome() + " foi promovido para " + novaFuncao + "\n");
             switch (novaFuncao) {
                 case "Estoquista" -> salarioHora = 7.00;
                 case "Gerente" -> salarioHora = 12.00;
                 case "Caixa" -> salarioHora = 8.00;   
             }
-        }else System.out.println("Nova funcao nao identificada\n");  
+        }else System.out.println("Nova funcao invalida\n");  
     }
     
     public void pagarFuncionario(int horasTrabalhadas, Loja loja){

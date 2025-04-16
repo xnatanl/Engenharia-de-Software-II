@@ -22,7 +22,7 @@ public class Loja {
             produto.setQuantidade(produto.getQuantidade() + adicional); 
             
             System.out.println("*Compra*\nSaldo anterior da loja: R$" + saldoCofre 
-                + "\nCompra de " + adicional + " " + produto.getNome() + " no valor de R$" + preco + " adicionado ao estoque."
+                + "\nCompra de " + adicional + " " + produto.getNome() + " " + produto.getTipo() + " no valor de R$" + preco + " adicionado ao estoque."
                 + "\nQuantidade do produto em estoque: " + produto.getQuantidade());
                 saldoCofre -= valorTotalCompra;
                 System.out.println("O saldo no cofre eh de: R$" + saldoCofre + "\n");
@@ -35,7 +35,7 @@ public class Loja {
         if(qtd <= produto.getQuantidade()){
             
             System.out.println("*Venda*\nSaldo anterior da loja: R$" + saldoCofre 
-                + "\nVenda de " + qtd + " " + produto.getNome() + " no valor de R$" + produto.getPreco() + " cada"
+                + "\nVenda de " + qtd + " " + produto.getNome() + " " + produto.getTipo() + " no valor de R$" + produto.getPreco() + " cada"
                 + "\nQuantidade do produto em estoque: " + produto.getQuantidade());
                 saldoCofre += valorTotalVenda;
                 System.out.println("O saldo no cofre eh de: R$" + saldoCofre + "\n");

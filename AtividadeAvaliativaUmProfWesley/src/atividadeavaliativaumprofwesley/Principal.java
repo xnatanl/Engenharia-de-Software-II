@@ -9,11 +9,15 @@ public class Principal {
     public static void main(String[] args) {
         Loja atacarejo = new Loja("Hering", "12.512.877/0001-21", 50000.00);
         
-        Produto roupa = new Produto(201, "Camiseta", "Polo", 10, 100.00);
+        Produto roupa = new Produto(101, "Camiseta", "Polo", 10, 100.00);
+        
+        Produto roupa2 = new Produto(202, "Short", "Jeans", 5, 50.00);
+        
+        roupa2.consultarProduto();
+        
+        atacarejo.comprarMercadoria(10, 20.00, roupa2);
         
         roupa.consultarProduto();
-        
-        atacarejo.comprarMercadoria(1, 50, roupa);
         
         atacarejo.venderMercadoria(2, roupa);
        
@@ -28,5 +32,7 @@ public class Principal {
         f1.promocao("Gerente");
         
         f1.pagarFuncionario(10, atacarejo);
+        
+        
     }
 }

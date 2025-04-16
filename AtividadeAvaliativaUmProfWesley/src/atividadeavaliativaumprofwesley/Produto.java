@@ -20,8 +20,8 @@ public class Produto {
     }
     
     public void consultarProduto(){
-        System.out.println("\nProduto: "
-            + id
+        System.out.println("*Consulta produto*"
+            + "\nId: " + id
             + "\nNome: " + nome
             + "\nTipo: " + tipo
             + "\nDisponivel em estoque: " + quantidade
