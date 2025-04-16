@@ -18,12 +18,13 @@ public class Loja {
     }    
         
     public void venderMercadoria(int qtd, Produto produto){
-        double valorTotalVenda = qtd * produto.getPreco();
-    
-        saldoCofre += valorTotalVenda;
-        produto.setQuantidade(produto.getQuantidade() - qtd);
-        System.out.println("Produto vendido, o saldo no cofre eh de: R$" + saldoCofre + "\n");
-    } // esqueci de fazer if para verificar no estoque 
+        if(qtd <= produto.getQuantidade()){
+            double valorTotalVenda = qtd * produto.getPreco();
+            saldoCofre += valorTotalVenda;
+            produto.setQuantidade(produto.getQuantidade() - qtd);
+            System.out.println("Produto vendido, o saldo no cofre eh de: R$" + saldoCofre + "\n");  
+        }else System.out.println("Informe uma quantidade disponivel do produto no estoque\n");
+    }
                  
     public void pagarFornecedor(double valor){
         saldoCofre = saldoCofre - valor;

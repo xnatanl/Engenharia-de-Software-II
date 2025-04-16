@@ -37,7 +37,7 @@ public class Principal {
         atacarejo.setCnpj("12.512.877/0001-21");
         atacarejo.setSaldoCofre(50000.00);
         
-        f1.promocao("Gerente");
+        f1.promocao("Estoquista");
         f1.pagarFuncionario(10, atacarejo);
         c1.consultarNome();
         roupa.consultarProduto();
